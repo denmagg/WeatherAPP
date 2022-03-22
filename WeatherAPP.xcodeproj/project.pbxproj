@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59B2C71627EA06B700D419C0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59B2C71527EA06B700D419C0 /* .gitignore */; };
 		59FB19C227E496F20026E0D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB19C127E496F20026E0D2 /* AppDelegate.swift */; };
 		59FB19C427E496F20026E0D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB19C327E496F20026E0D2 /* SceneDelegate.swift */; };
 		59FB19CB27E496F30026E0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59FB19CA27E496F30026E0D2 /* Assets.xcassets */; };
@@ -35,7 +36,6 @@
 		59FB1A4427E9DF960026E0D2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB1A4327E9DF960026E0D2 /* UIViewExtension.swift */; };
 		59FB1A4627E9DFAF0026E0D2 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB1A4527E9DFAF0026E0D2 /* UILabelExtension.swift */; };
 		59FB1A4827E9DFC30026E0D2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB1A4727E9DFC30026E0D2 /* UIScrollViewExtension.swift */; };
-		59FB1A4A27E9F6320026E0D2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59FB1A4927E9F6320026E0D2 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59B2C71527EA06B700D419C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		59FB19BE27E496F20026E0D2 /* WeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FB19C127E496F20026E0D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59FB19C327E496F20026E0D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		59FB1A4327E9DF960026E0D2 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		59FB1A4527E9DFAF0026E0D2 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		59FB1A4727E9DFC30026E0D2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
-		59FB1A4927E9F6320026E0D2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +119,7 @@
 		59FB19B527E496F20026E0D2 = {
 			isa = PBXGroup;
 			children = (
-				59FB1A4927E9F6320026E0D2 /* .gitignore */,
+				59B2C71527EA06B700D419C0 /* .gitignore */,
 				59FB19C027E496F20026E0D2 /* WeatherAPP */,
 				59FB19D727E496F30026E0D2 /* WeatherAPPTests */,
 				59FB19E127E496F30026E0D2 /* WeatherAPPUITests */,
@@ -356,7 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59FB19CE27E496F30026E0D2 /* LaunchScreen.storyboard in Resources */,
-				59FB1A4A27E9F6320026E0D2 /* .gitignore in Resources */,
+				59B2C71627EA06B700D419C0 /* .gitignore in Resources */,
 				59FB19CB27E496F30026E0D2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
