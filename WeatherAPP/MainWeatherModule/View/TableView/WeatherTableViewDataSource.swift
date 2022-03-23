@@ -1,5 +1,5 @@
 //
-//  TableViewDataSource.swift
+//  WeatherTableViewDataSource.swift
 //  WeatherAPP
 //
 //  Created by Денис Медведев on 19.03.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewDataSource: NSObject, UITableViewDataSource {
+class WeatherTableViewDataSource: NSObject, UITableViewDataSource {
     
     var dataDayForecast: [(String?, String?, String?, String?)]?
     var dataDetailDescription: String?

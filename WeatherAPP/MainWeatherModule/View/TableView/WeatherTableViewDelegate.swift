@@ -1,5 +1,5 @@
 //
-//  TableViewDelegate.swift
+//  WeatherTableViewDelegate.swift
 //  WeatherAPP
 //
 //  Created by Денис Медведев on 19.03.2022.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol WeatherTableViewDelegate: AnyObject {
+protocol MainWeatherVCDelegate: AnyObject {
     func selectedCell(row: Int)
 }
 
-class TableViewDelegate: NSObject, UITableViewDelegate {
+class WeatherTableViewDelegate: NSObject, UITableViewDelegate {
     // #1
-    weak var delegate: WeatherTableViewDelegate?
+    weak var delegate: MainWeatherVCDelegate?
     
     // #2
-    init(withDelegate delegate: WeatherTableViewDelegate) {
+    init(withDelegate delegate: MainWeatherVCDelegate) {
         self.delegate = delegate
     }
     
