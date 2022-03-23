@@ -5,7 +5,6 @@
 //  Created by Денис Медведев on 19.03.2022.
 //
 
-import Foundation
 import UIKit
 
 protocol WeatherCollectionViewDelegate: AnyObject {

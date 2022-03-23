@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		59B2C71627EA06B700D419C0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59B2C71527EA06B700D419C0 /* .gitignore */; };
+		59B2C71827EA18B400D419C0 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2C71727EA18B400D419C0 /* CityView.swift */; };
+		59B2C71A27EA1FD600D419C0 /* ScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2C71927EA1FD600D419C0 /* ScrollViewDelegate.swift */; };
 		59FB19C227E496F20026E0D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB19C127E496F20026E0D2 /* AppDelegate.swift */; };
 		59FB19C427E496F20026E0D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB19C327E496F20026E0D2 /* SceneDelegate.swift */; };
 		59FB19CB27E496F30026E0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59FB19CA27E496F30026E0D2 /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 
 /* Begin PBXFileReference section */
 		59B2C71527EA06B700D419C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		59B2C71727EA18B400D419C0 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
+		59B2C71927EA1FD600D419C0 /* ScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDelegate.swift; sourceTree = "<group>"; };
 		59FB19BE27E496F20026E0D2 /* WeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FB19C127E496F20026E0D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59FB19C327E496F20026E0D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				59FB19F927E499070026E0D2 /* MainWeatherViewController.swift */,
+				59B2C71727EA18B400D419C0 /* CityView.swift */,
+				59B2C71927EA1FD600D419C0 /* ScrollViewDelegate.swift */,
 				59FB1A4027E9DED90026E0D2 /* CollectionView */,
 				59FB1A4127E9DF020026E0D2 /* TableView */,
 				59FB1A2827E50EAC0026E0D2 /* HourlyWeatherCollectionView.swift */,
@@ -395,8 +401,10 @@
 				59FB1A3727E7F8DB0026E0D2 /* DetailDescriptionTableViewCell.swift in Sources */,
 				59FB1A3F27E8EC520026E0D2 /* CollectionViewFlowLayout.swift in Sources */,
 				59FB1A3D27E8D60F0026E0D2 /* HourlyWeatherCell.swift in Sources */,
+				59B2C71827EA18B400D419C0 /* CityView.swift in Sources */,
 				59FB19FE27E49A0B0026E0D2 /* Router.swift in Sources */,
 				59FB1A3527E7C93C0026E0D2 /* DayForecastTableViewCell.swift in Sources */,
+				59B2C71A27EA1FD600D419C0 /* ScrollViewDelegate.swift in Sources */,
 				59FB1A0727E49B470026E0D2 /* NetworkMonitor.swift in Sources */,
 				59FB1A3327E615B90026E0D2 /* CollectionViewDataSource.swift in Sources */,
 				59FB1A2F27E5314B0026E0D2 /* TableViewDataSource.swift in Sources */,

@@ -18,6 +18,36 @@ struct HourlyWeatherData {
 }
 
 class MainWeatherViewController: UIViewController, MainWeatherViewProtocol, WeatherTableViewDelegate, WeatherCollectionViewDelegate {
+    
+    lazy var cityViews = [CityView(frame: CGRect.zero, color: .blue), CityView(frame: CGRect.zero, color: .gray)]
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isPagingEnabled = true
+        scrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(cityViews.count) , height: self.view.frame.height)
+        
+        for i in 0..<cityViews.count {
+            scrollView.addSubview(cityViews[i])
+            cityViews[i].frame = CGRect(x: self.view.frame.width * CGFloat(i), y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        }
+        
+        scrollView.delegate = self
+        return scrollView
+    }()
+    
+    lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = cityViews.count
+        pageControl.currentPage = 0
+        pageControl.addTarget(self, action: #selector(pageControlTapHaddler(sender:)), for: .touchUpInside)
+        return pageControl
+    }()
+    
+    @objc func pageControlTapHaddler(sender: UIPageControl) {
+        scrollView.scrollTo(horisontalPage: sender.currentPage , animated: true)
+    }
+    
     func selectedItem(number: Int) {
         print("selected item number: \(number)")
     }
@@ -131,6 +161,9 @@ class MainWeatherViewController: UIViewController, MainWeatherViewProtocol, Weat
     }
     
     private func setupSubviews() {
+        self.view.addSubview(scrollView)
+        self.view.addSubview(pageControl)
+        
         self.view.addSubview(cityLabel)
         self.view.addSubview(weatherLabel)
         self.view.addSubview(currentTemperatureLabel)
@@ -150,7 +183,17 @@ class MainWeatherViewController: UIViewController, MainWeatherViewProtocol, Weat
     private func setupConstraints() {
         //FIXME: why translatesAutoresizingMaskIntoConstraints = false
         
-        //var constraints = [NSLayoutConstraint]()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
         
         // setup cityLabel constraints
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -227,4 +270,11 @@ class MainWeatherViewController: UIViewController, MainWeatherViewProtocol, Weat
         print("")
     }
     
+}
+
+extension MainWeatherViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = Int(round(scrollView.contentOffset.x / self.view.frame.width))
+        pageControl.currentPage = pageIndex
+    }
 }
