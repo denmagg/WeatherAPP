@@ -116,6 +116,10 @@ class MainWeatherViewController: UIViewController {
         scrollView.scrollTo(horisontalPage: sender.currentPage , animated: true)
     }
     
+    @objc func didTapOnManageButton(sender: UIButton) {
+        
+    }
+    
 }
 
 extension MainWeatherViewController: UIScrollViewDelegate {

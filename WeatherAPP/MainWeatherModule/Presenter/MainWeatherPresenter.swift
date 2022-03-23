@@ -14,9 +14,15 @@ protocol MainWeatherViewProtocol: AnyObject {
 
 protocol MainWeatherPresenterProtocol: AnyObject {
     init(view: MainWeatherViewProtocol, router: RouterProtocol)
+    
+    func tapOnTheManage()
 }
 
 class MainWeatherPresenter: MainWeatherPresenterProtocol {
+    func tapOnTheManage() {
+        print("")
+    }
+    
     
     //MARK: private properties
     
