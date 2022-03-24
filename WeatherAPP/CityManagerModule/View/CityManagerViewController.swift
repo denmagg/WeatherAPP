@@ -9,16 +9,18 @@ import UIKit
 
 class CityManagerViewController: UIViewController {
     
-    var tableViewDataSource: CitiesTableViewDataSource?
-    var tableViewDelegate: CitiesTableViewDelegate?
+    var presenter: CityManagerPresenterProtocol!
+    
     let tableView = UITableView()
+    var citiesTableViewDataSource: CitiesTableViewDataSource?
+    var citiesTableViewDelegate: CitiesTableViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupSubviews()
         configureView()
         configureSubviews()
-        setupSubviews()
         setupConstraints()
     }
     
@@ -27,7 +29,14 @@ class CityManagerViewController: UIViewController {
     }
     
     private func configureSubviews() {
-        
+        let dataCityList = [("Moscow", "9:45", "8°"), ("Moscow", "9:45", "8°")]
+        self.citiesTableViewDataSource = CitiesTableViewDataSource(withData: dataCityList)
+        self.citiesTableViewDelegate = CitiesTableViewDelegate(withDelegate: self)
+        tableView.dataSource = self.citiesTableViewDataSource
+        tableView.delegate = self.citiesTableViewDelegate
+        tableView.backgroundColor = .green
+        tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cityCell")
+        tableView.register(ManageTableViewCell.self, forCellReuseIdentifier: "manageCell")
     }
     
     private func setupSubviews() {
@@ -36,11 +45,15 @@ class CityManagerViewController: UIViewController {
     
     private func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
+    
+}
+
+extension CityManagerViewController: CityManagerViewProtocol {
     
 }
 

@@ -23,9 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //передали ему сцену
         window?.windowScene = windowScene
         
-        let mainWeatherViewController = MainWeatherViewController()
+        //let mainWeatherViewController = MainWeatherViewController()
+        let moduleBuilder = ModuleBuilder()
         
-        window?.rootViewController = mainWeatherViewController
+        window?.rootViewController = moduleBuilder.createCityManagerModule()
         window?.makeKeyAndVisible()
     }
 

@@ -21,8 +21,8 @@ class CityView: UIView {
     var collectionViewDelegate: UICollectionViewDelegate?
     var collectionView: UICollectionView?
     
-    var tableViewDataSource: WeatherTableViewDataSource?
-    var tableViewDelegate: WeatherTableViewDelegate?
+    var weatherTableViewDataSource: WeatherTableViewDataSource?
+    var weatherTableViewDelegate: WeatherTableViewDelegate?
     let tableView = UITableView()
     
     init(frame: CGRect, color: UIColor) {
@@ -85,11 +85,11 @@ class CityView: UIView {
         let dataSpecs = [("SUNRISE", "6:29"), ("SUNSET", "18:45"), ("CHANCE OF RAIN", "10%"), ("HUMIDITY", "55%"), ("WIND", "NW 3 m/s"), ("FEELS LIKE", "3°"), ("PRECIPITATION", "0 cm"), ("PRESSURE", "775,71 mm Hg"), ("VISIBILITY", "9,7 km"), ("UV INDEX", "0")]
         let weatherData = WeatherData(dataDayForecast: dataDayForecast, dataDetailDescription: dataDetailDescription, dataSpecs: dataSpecs)
         
-        self.tableViewDelegate = WeatherTableViewDelegate(withDelegate: self)
+        self.weatherTableViewDelegate = WeatherTableViewDelegate(withDelegate: self)
 
-        self.tableViewDataSource = WeatherTableViewDataSource(withData: weatherData)
-        tableView.delegate = self.tableViewDelegate
-        tableView.dataSource = self.tableViewDataSource
+        self.weatherTableViewDataSource = WeatherTableViewDataSource(withData: weatherData)
+        tableView.delegate = self.weatherTableViewDelegate
+        tableView.dataSource = self.weatherTableViewDataSource
         tableView.backgroundColor = .green
         tableView.separatorStyle = .none
         tableView.register(DayForecastTableViewCell.self, forCellReuseIdentifier: "dayForecastCell")
