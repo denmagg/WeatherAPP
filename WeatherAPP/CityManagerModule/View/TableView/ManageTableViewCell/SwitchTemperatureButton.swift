@@ -9,6 +9,14 @@ import UIKit
 
 class SwitchTemperatureButton: UIButton {
     
+    enum Consts {
+        static let darkAlpha: CGFloat = 0.6
+        static let brightAlpha: CGFloat = 1
+        static let celsuisLabelText = "℃"
+        static let fahrenheitLabelText = "℉"
+        static let slashLabelLabelText = " / "
+    }
+    
     let celsuisLabel = UILabel()
     let slashLabel = UILabel()
     let fahrenheitLabel = UILabel()
@@ -16,11 +24,11 @@ class SwitchTemperatureButton: UIButton {
     var isCelsius = true {
         willSet(newValue) {
             if newValue == true {
-                celsuisLabel.alpha = 1
-                fahrenheitLabel.alpha = 0.6
+                celsuisLabel.alpha = Consts.brightAlpha
+                fahrenheitLabel.alpha = Consts.darkAlpha
             } else {
-                celsuisLabel.alpha = 0.6
-                fahrenheitLabel.alpha = 1
+                celsuisLabel.alpha = Consts.darkAlpha
+                fahrenheitLabel.alpha = Consts.brightAlpha
             }
         }
     }
@@ -44,19 +52,19 @@ class SwitchTemperatureButton: UIButton {
     }
     
     private func configurateSubviews() {
-        celsuisLabel.text = "℃"
+        celsuisLabel.text = Consts.celsuisLabelText
         
-        slashLabel.text = " / "
-        slashLabel.alpha = 0.6
+        slashLabel.text = Consts.slashLabelLabelText
+        slashLabel.alpha = Consts.darkAlpha
         
-        fahrenheitLabel.text = "℉"
+        fahrenheitLabel.text = Consts.fahrenheitLabelText
         
         if isCelsius == false {
-            celsuisLabel.alpha = 0.6
-            fahrenheitLabel.alpha = 1
+            celsuisLabel.alpha = Consts.darkAlpha
+            fahrenheitLabel.alpha = Consts.brightAlpha
         } else {
-            celsuisLabel.alpha = 1
-            fahrenheitLabel.alpha = 0.6
+            celsuisLabel.alpha = Consts.brightAlpha
+            fahrenheitLabel.alpha = Consts.darkAlpha
         }
     }
     
@@ -73,13 +81,5 @@ class SwitchTemperatureButton: UIButton {
         celsuisLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         celsuisLabel.trailingAnchor.constraint(equalTo: slashLabel.leadingAnchor).isActive = true
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

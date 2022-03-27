@@ -12,6 +12,9 @@
 		594C9ED127EBA46900C3B212 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C9ED027EBA46900C3B212 /* CityTableViewCell.swift */; };
 		594C9ED327EBB31C00C3B212 /* ManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C9ED227EBB31C00C3B212 /* ManageTableViewCell.swift */; };
 		594C9ED927ECCF3100C3B212 /* SwitchTemperatureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C9ED827ECCF3100C3B212 /* SwitchTemperatureButton.swift */; };
+		594C9EDC27ED2F2100C3B212 /* CityList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 594C9EDA27ED2F2100C3B212 /* CityList.xcdatamodeld */; };
+		594C9EDE27EE1DA800C3B212 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C9EDD27EE1DA800C3B212 /* Router.swift */; };
+		594C9EE127EE24E600C3B212 /* containerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594C9EE027EE24E600C3B212 /* containerExtension.swift */; };
 		59B2C71627EA06B700D419C0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 59B2C71527EA06B700D419C0 /* .gitignore */; };
 		59B2C71827EA18B400D419C0 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2C71727EA18B400D419C0 /* CityView.swift */; };
 		59B2C71A27EA1FD600D419C0 /* ScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2C71927EA1FD600D419C0 /* ScrollViewDelegate.swift */; };
@@ -69,6 +72,9 @@
 		594C9ED027EBA46900C3B212 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		594C9ED227EBB31C00C3B212 /* ManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTableViewCell.swift; sourceTree = "<group>"; };
 		594C9ED827ECCF3100C3B212 /* SwitchTemperatureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTemperatureButton.swift; sourceTree = "<group>"; };
+		594C9EDB27ED2F2100C3B212 /* CityList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityList.xcdatamodel; sourceTree = "<group>"; };
+		594C9EDD27EE1DA800C3B212 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		594C9EE027EE24E600C3B212 /* containerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = containerExtension.swift; sourceTree = "<group>"; };
 		59B2C71527EA06B700D419C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		59B2C71727EA18B400D419C0 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
 		59B2C71927EA1FD600D419C0 /* ScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +170,14 @@
 			path = ManageTableViewCell;
 			sourceTree = "<group>";
 		};
+		594C9EDF27EE249E00C3B212 /* UIKit extensions */ = {
+			isa = PBXGroup;
+			children = (
+				594C9EE027EE24E600C3B212 /* containerExtension.swift */,
+			);
+			path = "UIKit extensions";
+			sourceTree = "<group>";
+		};
 		59B2C71B27EB7D1B00D419C0 /* CityManagerModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				59B2C72327EB7E0E00D419C0 /* CityList.swift */,
+				594C9EDA27ED2F2100C3B212 /* CityList.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,9 +241,11 @@
 				59FB19C127E496F20026E0D2 /* AppDelegate.swift */,
 				59FB19C327E496F20026E0D2 /* SceneDelegate.swift */,
 				59FB19FF27E49A150026E0D2 /* ModuleBuilder.swift */,
+				594C9EDD27EE1DA800C3B212 /* Router.swift */,
 				59FB19F327E498640026E0D2 /* MainWeatherModule */,
 				59B2C71B27EB7D1B00D419C0 /* CityManagerModule */,
 				59FB1A0127E49B050026E0D2 /* ServiceLayer */,
+				594C9EDF27EE249E00C3B212 /* UIKit extensions */,
 				59FB19CA27E496F30026E0D2 /* Assets.xcassets */,
 				59FB19CC27E496F30026E0D2 /* LaunchScreen.storyboard */,
 				59FB19CF27E496F30026E0D2 /* Info.plist */,
@@ -464,6 +481,7 @@
 			files = (
 				59FB1A3927E8B8D90026E0D2 /* SpecsTableViewCell.swift in Sources */,
 				59FB19C227E496F20026E0D2 /* AppDelegate.swift in Sources */,
+				594C9EDC27ED2F2100C3B212 /* CityList.xcdatamodeld in Sources */,
 				59FB1A2D27E530FA0026E0D2 /* WeatherTableViewDelegate.swift in Sources */,
 				59FB19F827E498EA0026E0D2 /* MainWeatherPresenter.swift in Sources */,
 				59FB1A0327E49B2D0026E0D2 /* NetworkService.swift in Sources */,
@@ -483,6 +501,7 @@
 				59B2C71A27EA1FD600D419C0 /* ScrollViewDelegate.swift in Sources */,
 				59FB1A0727E49B470026E0D2 /* NetworkMonitor.swift in Sources */,
 				59FB1A3327E615B90026E0D2 /* CollectionViewDataSource.swift in Sources */,
+				594C9EDE27EE1DA800C3B212 /* Router.swift in Sources */,
 				59B2C72427EB7E0E00D419C0 /* CityList.swift in Sources */,
 				59FB1A2F27E5314B0026E0D2 /* WeatherTableViewDataSource.swift in Sources */,
 				59FB1A3127E615A60026E0D2 /* CollectionViewDelegate.swift in Sources */,
@@ -493,6 +512,7 @@
 				594C9ECF27EB94FB00C3B212 /* CitiesTableViewDataSource.swift in Sources */,
 				59B2C72027EB7DE500D419C0 /* CityManagerViewController.swift in Sources */,
 				594C9ED927ECCF3100C3B212 /* SwitchTemperatureButton.swift in Sources */,
+				594C9EE127EE24E600C3B212 /* containerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +850,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		594C9EDA27ED2F2100C3B212 /* CityList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				594C9EDB27ED2F2100C3B212 /* CityList.xcdatamodel */,
+			);
+			currentVersion = 594C9EDB27ED2F2100C3B212 /* CityList.xcdatamodel */;
+			path = CityList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 59FB19B627E496F20026E0D2 /* Project object */;
 }

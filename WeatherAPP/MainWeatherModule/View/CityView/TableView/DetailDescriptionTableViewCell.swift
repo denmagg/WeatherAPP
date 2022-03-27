@@ -15,7 +15,7 @@ class DetailDescriptionTableViewCell: UITableViewCell {
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: "detailDescriptionCell")
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configurateSubviews()
     }

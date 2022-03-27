@@ -8,8 +8,8 @@
 import UIKit
 
 protocol ModuleBuilderProtocol {
-    func createMainWeatherModule() -> UIViewController
-    func createCityManagerModule() -> UIViewController
+    func createMainWeatherModule(router: RouterProtocol) -> UIViewController
+    func createCityManagerModule(router: RouterProtocol) -> UIViewController
 }
 
 //Внедрение зависимостей - те они создаются не внутри всех этих сущностей эти штуки, а снаружи и потом туда инжектятся
@@ -18,16 +18,16 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     
     //MARK: methods
     
-    func createMainWeatherModule() -> UIViewController {
+    func createMainWeatherModule(router: RouterProtocol) -> UIViewController {
         let view = MainWeatherViewController()
-        let presenter = MainWeatherPresenter(view: view)
+        let presenter = MainWeatherPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }
     
-    func createCityManagerModule() -> UIViewController {
+    func createCityManagerModule(router: RouterProtocol) -> UIViewController {
         let view = CityManagerViewController()
-        let presenter = CityManagerPresenter(view: view)
+        let presenter = CityManagerPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }

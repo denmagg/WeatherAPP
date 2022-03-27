@@ -25,6 +25,46 @@ class CityView: UIView {
     var weatherTableViewDelegate: WeatherTableViewDelegate?
     let tableView = UITableView()
     
+    enum Consts {
+        enum CityLabel {
+            static let text = "Moscow"
+            static let font: UIFont = .systemFont(ofSize: 32)
+        }
+        enum WeatherLabel {
+            static let text = "Mostly Clear"
+            static let font: UIFont = .systemFont(ofSize: 17)
+        }
+        enum CurrentTemperatureLabel {
+            static let text = "5°"
+            static let font: UIFont = .systemFont(ofSize: 50)
+        }
+        enum TodayDateLabel {
+            static let text = "Friday"
+            static let font: UIFont = .systemFont(ofSize: 20)
+        }
+        enum TodayLabel {
+            static let text = "TODAY"
+            static let font: UIFont = .boldSystemFont(ofSize: 16)
+        }
+        enum TodayMinTemperatureLabel {
+            static let text = "-8"
+            static let font: UIFont = .systemFont(ofSize: 20)
+        }
+        enum TodayMaxTemperatureLabel {
+            static let text = "7"
+            static let font: UIFont = .systemFont(ofSize: 20)
+        }
+        enum CollectionView {
+            static let height: CGFloat = 100
+            static let cellId = "hourlyWeatherCell"
+        }
+        enum TableView {
+            static let dayForecastCellId = "dayForecastCell"
+            static let detailDescriptionCellId = "detailDescriptionCell"
+            static let specsCellId = "specsCell"
+        }
+    }
+    
     init(frame: CGRect, color: UIColor) {
         super.init(frame: frame)
         self.backgroundColor = color
@@ -44,29 +84,29 @@ class CityView: UIView {
     }
     
     private func configureMainWeatherInfo() {
-        cityLabel.text = "Moscow"
-        cityLabel.font = .systemFont(ofSize: 32)
+        cityLabel.text = Consts.CityLabel.text
+        cityLabel.font = Consts.CityLabel.font
         
-        weatherLabel.text = "Mostly Clear"
-        weatherLabel.font = .systemFont(ofSize: 17)
+        weatherLabel.text = Consts.WeatherLabel.text
+        weatherLabel.font = Consts.WeatherLabel.font
         
-        currentTemperatureLabel.text = "5°"
-        currentTemperatureLabel.font = .systemFont(ofSize: 50)
+        currentTemperatureLabel.text = Consts.CurrentTemperatureLabel.text
+        currentTemperatureLabel.font = Consts.CurrentTemperatureLabel.font
         
-        todayDateLabel.text = "Friday"
-        todayDateLabel.font = .systemFont(ofSize: 20)
+        todayDateLabel.text = Consts.TodayDateLabel.text
+        todayDateLabel.font = Consts.TodayDateLabel.font
         
-        todayLabel.text = "TODAY"
-        todayLabel.font = .boldSystemFont(ofSize: 16)
+        todayLabel.text = Consts.TodayLabel.text
+        todayLabel.font = Consts.TodayLabel.font
         
-        todayMinTemperatureLabel.text = "-8"
-        todayMinTemperatureLabel.font = .systemFont(ofSize: 20)
+        todayMinTemperatureLabel.text = Consts.TodayMinTemperatureLabel.text
+        todayMinTemperatureLabel.font = Consts.TodayMinTemperatureLabel.font
         
-        todayMaxTemperatureLabel.text = "7"
-        todayMaxTemperatureLabel.font = .systemFont(ofSize: 20)
+        todayMaxTemperatureLabel.text = Consts.TodayMaxTemperatureLabel.text
+        todayMaxTemperatureLabel.font = Consts.TodayMaxTemperatureLabel.font
         
         let layout = CollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 100), collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: Consts.CollectionView.height), collectionViewLayout: layout)
         collectionView?.backgroundColor = .red
         let dataHourlyForecast = [("Now","☀️","8°"), ("20","☀️","8°"), ("21","☀️","8°"), ("22","☀️","8°"), ("23","☀️","8°"), ("00","☀️","8°"), ("01","☀️","8°"), ("02","☀️","8°"), ("03","☀️","8°"), ("04","☀️","8°"), ("05","☀️","8°"), ("06","☀️","8°"), ("06:28","☀️","Sunrise°"), ("07","☀️","8°"), ("08","☀️","8°"), ("09","☀️","8°"), ("10","☀️","8°"), ("11","☀️","8°"), ("12","☀️","8°"), ("13","☀️","8°"), ("14","☀️","8°"), ("15","☀️","8°"), ("16","☀️","8°"), ("17","☀️","8°"), ("18","☀️","8°"), ("18:48","☀️","Sunset°"), ("19","☀️","8°")]
         let hourlyWeatherData = HourlyWeatherData(dataHourlyForecast: dataHourlyForecast)
@@ -74,7 +114,7 @@ class CityView: UIView {
         self.collectionViewDataSource = CollectionViewDataSource(withData: hourlyWeatherData)
         collectionView?.delegate = self.collectionViewDelegate
         collectionView?.dataSource = self.collectionViewDataSource
-        collectionView?.register(HourlyWeatherCell.self, forCellWithReuseIdentifier: "hourlyWeatherCell")
+        collectionView?.register(HourlyWeatherCell.self, forCellWithReuseIdentifier: Consts.CollectionView.cellId)
         collectionView?.showsHorizontalScrollIndicator = false
 //        collectionView.setCollectionViewLayout(UICollectionViewLayout, animated: true)
                 
@@ -92,9 +132,9 @@ class CityView: UIView {
         tableView.dataSource = self.weatherTableViewDataSource
         tableView.backgroundColor = .green
         tableView.separatorStyle = .none
-        tableView.register(DayForecastTableViewCell.self, forCellReuseIdentifier: "dayForecastCell")
-        tableView.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: "detailDescriptionCell")
-        tableView.register(SpecsTableViewCell.self, forCellReuseIdentifier: "specsCell")
+        tableView.register(DayForecastTableViewCell.self, forCellReuseIdentifier: Consts.TableView.dayForecastCellId)
+        tableView.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: Consts.TableView.detailDescriptionCellId)
+        tableView.register(SpecsTableViewCell.self, forCellReuseIdentifier: Consts.TableView.specsCellId)
     }
     
     private func setupSubviews() {

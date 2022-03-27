@@ -13,11 +13,21 @@ class ManageTableViewCell: UITableViewCell {
     var addCityButton = UIButton()
     let weatherLinkButton = UIButton()
     
+    enum Consts {
+        enum AddCityButton {
+            static let image = UIImage(systemName: "plus.circle")
+            static let tintColor = UIColor.white
+        }
+        enum WeatherLinkButton {
+            static let image = UIImage(named: "the-weather-channel")
+            static let alpha: CGFloat = 0.6
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupSubviews()
-        configureCell()
         configurateSubviews()
         setupConstraints()
     }
@@ -32,23 +42,21 @@ class ManageTableViewCell: UITableViewCell {
         self.addSubview(weatherLinkButton)
     }
     
-    private func configureCell() {
-        self.heightAnchor.constraint(equalToConstant: 75).isActive = true
-    }
-    
     private func configurateSubviews() {
         switchTemperatureButton.backgroundColor = .purple
         switchTemperatureButton.tintColor = .white
         
         addCityButton.backgroundColor = .purple
-        addCityButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-        addCityButton.tintColor = .white
+        addCityButton.setImage(Consts.AddCityButton.image, for: .normal)
+        addCityButton.tintColor = Consts.AddCityButton.tintColor
         
-        weatherLinkButton.setImage(UIImage(named: "the-weather-channel"), for: .normal)
-        weatherLinkButton.alpha = 0.6
+        weatherLinkButton.setImage(Consts.WeatherLinkButton.image, for: .normal)
+        weatherLinkButton.alpha = Consts.WeatherLinkButton.alpha
     }
     
     private func setupConstraints() {
+        self.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        
         switchTemperatureButton.translatesAutoresizingMaskIntoConstraints = false
         switchTemperatureButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         switchTemperatureButton.centerYAnchor.constraint(equalTo: addCityButton.centerYAnchor).isActive = true
@@ -69,7 +77,6 @@ class ManageTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

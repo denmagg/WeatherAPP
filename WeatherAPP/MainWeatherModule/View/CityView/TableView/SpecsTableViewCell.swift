@@ -20,7 +20,7 @@ class SpecsTableViewCell: UITableViewCell {
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: "specsCell")
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
         configurateSubviews()
     }

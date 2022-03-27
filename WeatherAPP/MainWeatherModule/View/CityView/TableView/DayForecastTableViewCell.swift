@@ -14,6 +14,10 @@ class DayForecastTableViewCell: UITableViewCell {
     var maxTemperatureLabel = UILabel()
     var minTemperatureLabel = UILabel()
     
+    enum Consts {
+        static let labelFont: UIFont = .systemFont(ofSize: 20)
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -36,10 +40,10 @@ class DayForecastTableViewCell: UITableViewCell {
     }
     
     private func configurateSubviews() {
-        dayLabel.font = .systemFont(ofSize: 20)
-        weatherEmojiLabel.font = .systemFont(ofSize: 20)
-        maxTemperatureLabel.font = .systemFont(ofSize: 20)
-        minTemperatureLabel.font = .systemFont(ofSize: 20)
+        dayLabel.font = Consts.labelFont
+        weatherEmojiLabel.font = Consts.labelFont
+        maxTemperatureLabel.font = Consts.labelFont
+        minTemperatureLabel.font = Consts.labelFont
     }
     
     private func setupConstraints() {

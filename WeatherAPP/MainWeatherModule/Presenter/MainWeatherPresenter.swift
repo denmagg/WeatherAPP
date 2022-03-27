@@ -13,21 +13,25 @@ protocol MainWeatherViewProtocol: AnyObject {
 }
 
 protocol MainWeatherPresenterProtocol: AnyObject {
-    init(view: MainWeatherViewProtocol)
+    init(view: MainWeatherViewProtocol, router: RouterProtocol)
     
     func tapOnTheManage()
 }
 
 class MainWeatherPresenter: MainWeatherPresenterProtocol {
+    
     //MARK: private properties
     
     private weak var view: MainWeatherViewProtocol?
+    private var router: RouterProtocol?
     
-    required init(view: MainWeatherViewProtocol) {
+    required init(view: MainWeatherViewProtocol, router: RouterProtocol) {
         self.view = view
+        self.router = router
     }
     
     func tapOnTheManage() {
-        
+        router?.showCityManager()
     }
+
 }

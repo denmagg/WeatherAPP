@@ -15,6 +15,11 @@ class CityManagerViewController: UIViewController {
     var citiesTableViewDataSource: CitiesTableViewDataSource?
     var citiesTableViewDelegate: CitiesTableViewDelegate?
     
+    enum Consts {
+        static let cityTableViewCellId = "cityCell"
+        static let manageTableViewCellId = "manageCell"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +56,10 @@ class CityManagerViewController: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
+    @objc func didTapOnCity(sender: UIButton) {
+        presenter.selectCity(city: 1)
+    }
+    
 }
 
 extension CityManagerViewController: CityManagerViewProtocol {
@@ -59,6 +68,6 @@ extension CityManagerViewController: CityManagerViewProtocol {
 
 extension CityManagerViewController: CityManagerVCDelegate {
     func selectedCell(row: Int) {
-        print("Row \(row)")
+        presenter.selectCity(city: row)
     }
 }

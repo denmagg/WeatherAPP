@@ -17,6 +17,13 @@ class WeatherTableViewDataSource: NSObject, UITableViewDataSource {
     var detailDescriptionCount = 0
     var specsCount = 0
     
+    enum Consts {
+        static let textPlaceholder = "-"
+        static let dayForecastCellId = "dayForecastCell"
+        static let detailDescriptionCellId = "detailDescriptionCell"
+        static let specsCellId = "specsCell"
+    }
+    
     init(withData weatherData: WeatherData) {
         super.init()
         
@@ -45,18 +52,18 @@ class WeatherTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0...(dayForecastCount-1):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "dayForecastCell", for: indexPath) as! DayForecastTableViewCell
-            cell.dayLabel.text = dataDayForecast?[indexPath.row].0 ?? "-"
-            cell.weatherEmojiLabel.text = dataDayForecast?[indexPath.row].1 ?? "-"
-            cell.maxTemperatureLabel.text = dataDayForecast?[indexPath.row].2 ?? "-"
-            cell.minTemperatureLabel.text = dataDayForecast?[indexPath.row].3 ?? "-"
+            let cell = tableView.dequeueReusableCell(withIdentifier: Consts.dayForecastCellId, for: indexPath) as! DayForecastTableViewCell
+            cell.dayLabel.text = dataDayForecast?[indexPath.row].0 ?? Consts.textPlaceholder
+            cell.weatherEmojiLabel.text = dataDayForecast?[indexPath.row].1 ?? Consts.textPlaceholder
+            cell.maxTemperatureLabel.text = dataDayForecast?[indexPath.row].2 ?? Consts.textPlaceholder
+            cell.minTemperatureLabel.text = dataDayForecast?[indexPath.row].3 ?? Consts.textPlaceholder
             return cell
         case dayForecastCount...(dayForecastCount + detailDescriptionCount - 1):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "detailDescriptionCell", for: indexPath) as! DetailDescriptionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Consts.detailDescriptionCellId, for: indexPath) as! DetailDescriptionTableViewCell
             cell.textLabel?.text = dataDetailDescription
             return cell
         case (dayForecastCount + detailDescriptionCount)...(dayForecastCount + detailDescriptionCount + specsCount - 1):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "specsCell", for: indexPath) as! SpecsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Consts.specsCellId, for: indexPath) as! SpecsTableViewCell
             //FIXME: textLabel depricated soon
             cell.textLabel?.text = dataSpecs?[indexPath.row - (dayForecastCount + detailDescriptionCount)].0
             cell.detailTextLabel?.text = dataSpecs?[indexPath.row - (dayForecastCount + detailDescriptionCount)].1

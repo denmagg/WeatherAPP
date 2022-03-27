@@ -20,10 +20,10 @@ struct HourlyWeatherData {
 class MainWeatherViewController: UIViewController {
     
     var presenter: MainWeatherPresenterProtocol!
-    
     var bottomPadding: CGFloat?
     let manageButton = UIButton()
     let weatherLinkButton = UIButton()
+    var loadingPage = 0
     
     lazy var cityViews = [CityView(frame: CGRect.zero, color: .blue), CityView(frame: CGRect.zero, color: .gray)]
     
@@ -45,10 +45,30 @@ class MainWeatherViewController: UIViewController {
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = cityViews.count
-        pageControl.currentPage = 0
-        pageControl.addTarget(self, action: #selector(pageControlTapHaddler(sender:)), for: .touchUpInside)
+        pageControl.currentPage = loadingPage
+        pageControl.addTarget(self, action: #selector(pageControlTapHaddler(sender:)), for: .valueChanged)
         return pageControl
     }()
+    
+    enum Consts {
+        enum ManageButton {
+            static let image = UIImage(systemName: "list.dash")
+            static let color: (white: CGFloat, alpha: CGFloat) = (1, 0.5)
+        }
+        enum WeatherLinkButton {
+            static let image = UIImage(named: "the-weather-channel")
+            static let alpha: CGFloat = 0.5
+            static let width: CGFloat = 25
+        }
+        enum PageControl {
+            static let height: CGFloat = 50
+            static let bottomSpacing: CGFloat = -12
+        }
+        enum Margins {
+            static let leading: CGFloat = 20
+            static let trailing: CGFloat = -20
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,16 +84,21 @@ class MainWeatherViewController: UIViewController {
         setupConstraints()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        pageControl.currentPage = loadingPage
+//    }
+    
     private func configureView() {
         self.view.backgroundColor = .systemBackground
     }
     
     private func configureMainWeatherInfo() {
-        manageButton.setImage(UIImage(systemName: "list.dash"), for: .normal)
-        manageButton.tintColor = .init(white: 1, alpha: 0.5)
+        manageButton.setImage(Consts.ManageButton.image, for: .normal)
+        manageButton.tintColor = .init(white: Consts.ManageButton.color.white, alpha: Consts.ManageButton.color.alpha)
+        manageButton.addTarget(self, action: #selector(didTapOnManageButton(sender:)), for: .touchUpInside)
         
-        weatherLinkButton.setImage(UIImage(named: "the-weather-channel"), for: .normal)
-        weatherLinkButton.alpha = 0.5
+        weatherLinkButton.setImage(Consts.WeatherLinkButton.image, for: .normal)
+        weatherLinkButton.alpha = Consts.WeatherLinkButton.alpha
     }
     
     private func setupSubviews() {
@@ -94,21 +119,21 @@ class MainWeatherViewController: UIViewController {
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        pageControl.heightAnchor.constraint(equalToConstant: Consts.PageControl.height).isActive = true
         pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
+        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Consts.PageControl.bottomSpacing).isActive = true
         
         // setup manageButton constraints
         manageButton.translatesAutoresizingMaskIntoConstraints = false
-        manageButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        manageButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: Consts.Margins.trailing).isActive = true
         manageButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         // setup weatherLinkButton constraints
         weatherLinkButton.translatesAutoresizingMaskIntoConstraints = false
-        weatherLinkButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        weatherLinkButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Consts.Margins.leading).isActive = true
         weatherLinkButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        weatherLinkButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        weatherLinkButton.widthAnchor.constraint(equalToConstant: Consts.WeatherLinkButton.width).isActive = true
         weatherLinkButton.heightAnchor.constraint(equalTo: weatherLinkButton.widthAnchor).isActive = true
     }
     
@@ -117,7 +142,7 @@ class MainWeatherViewController: UIViewController {
     }
     
     @objc func didTapOnManageButton(sender: UIButton) {
-        
+        presenter.tapOnTheManage()
     }
     
 }

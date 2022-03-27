@@ -15,11 +15,17 @@ class CityTableViewCell: UITableViewCell {
     var temperatureLabel = UILabel()
     var isCurrentImageView = UIImageView()
     
+    enum Consts {
+        static let nameLabelFont: UIFont = .systemFont(ofSize: 30)
+        static let timeLabelFont: UIFont = .systemFont(ofSize: 16)
+        static let temperatureLabelFont: UIFont = .systemFont(ofSize: 40)
+        static let isCurrentImage = UIImage(systemName: "location.fill")
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupSubviews()
-        configureCell()
         configurateSubviews()
         setupConstraints()
     }
@@ -36,18 +42,16 @@ class CityTableViewCell: UITableViewCell {
         self.addSubview(isCurrentImageView)
     }
     
-    private func configureCell() {
-        self.heightAnchor.constraint(equalToConstant: 75).isActive = true
-    }
-    
     private func configurateSubviews() {
-        nameLabel.font = .systemFont(ofSize: 30)
-        timeLabel.font = .systemFont(ofSize: 16)
-        temperatureLabel.font = .systemFont(ofSize: 40)
-        isCurrentImageView.image = UIImage(systemName: "location.fill")
+        nameLabel.font = Consts.nameLabelFont
+        timeLabel.font = Consts.timeLabelFont
+        temperatureLabel.font = Consts.temperatureLabelFont
+        isCurrentImageView.image = Consts.isCurrentImage
     }
     
     private func setupConstraints() {
+        self.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        
         nameTimeStackView.translatesAutoresizingMaskIntoConstraints = false
         nameTimeStackView.axis  = NSLayoutConstraint.Axis.vertical
         nameTimeStackView.distribution  = UIStackView.Distribution.equalSpacing
@@ -55,14 +59,7 @@ class CityTableViewCell: UITableViewCell {
         nameTimeStackView.spacing = 0
         nameTimeStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         nameTimeStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-//        nameLabel.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//
-//        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-//        timeLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
-//        timeLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        
+      
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         temperatureLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

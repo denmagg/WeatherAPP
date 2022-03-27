@@ -12,18 +12,23 @@ protocol CityManagerViewProtocol: AnyObject {
 }
 
 protocol CityManagerPresenterProtocol: AnyObject {
-    init(view: CityManagerViewProtocol)
+    init(view: CityManagerViewProtocol, router: RouterProtocol)
     
-    
+    func selectCity(city number: Int)
 }
 
 class CityManagerPresenter: CityManagerPresenterProtocol {
     
     private weak var view: CityManagerViewProtocol?
+    private var router: RouterProtocol?
     
-    required init(view: CityManagerViewProtocol) {
+    required init(view: CityManagerViewProtocol, router: RouterProtocol) {
         self.view = view
+        self.router = router
     }
     
+    func selectCity(city number: Int) {
+        router?.backToMainWeather(with: number)
+    }
     
 }
