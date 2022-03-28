@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol MainWeatherViewProtocol: AnyObject {
     func success()
@@ -13,7 +14,7 @@ protocol MainWeatherViewProtocol: AnyObject {
 }
 
 protocol MainWeatherPresenterProtocol: AnyObject {
-    init(view: MainWeatherViewProtocol, router: RouterProtocol)
+    init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher)
     
     func tapOnTheManage()
 }
@@ -24,10 +25,16 @@ class MainWeatherPresenter: MainWeatherPresenterProtocol {
     
     private weak var view: MainWeatherViewProtocol?
     private var router: RouterProtocol?
+    private let locationFetcher: LocationFetcher?
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+    }
     
-    required init(view: MainWeatherViewProtocol, router: RouterProtocol) {
+    required init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher) {
         self.view = view
         self.router = router
+        self.locationFetcher = locationFetcher
+        locationFetcher.start()
     }
     
     func tapOnTheManage() {

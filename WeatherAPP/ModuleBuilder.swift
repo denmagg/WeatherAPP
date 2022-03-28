@@ -20,7 +20,8 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     
     func createMainWeatherModule(router: RouterProtocol) -> UIViewController {
         let view = MainWeatherViewController()
-        let presenter = MainWeatherPresenter(view: view, router: router)
+        let locationFetcher = LocationFetcher()
+        let presenter = MainWeatherPresenter(view: view, router: router, locationFetcher: locationFetcher)
         view.presenter = presenter
         return view
     }

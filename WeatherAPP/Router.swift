@@ -43,14 +43,14 @@ final class Router : RouterProtocol {
         if let containerController = containerController {
             guard let cityManagerViewController = moduleBuilder?.createCityManagerModule(router: self) else { return }
             containerController.add(cityManagerViewController)
-            print("cтек добавили \(containerController.children)")
+            print("cтек добавили cityManager \(containerController.children)")
         }
     }
     
     func backToMainWeather(with city: Int) {
         if let containerController = containerController {
             containerController.children.last?.remove()
-            print("cтек удалили \(containerController.children)")
+            print("cтек удалили cityManager \(containerController.children)")
         }
     }
     

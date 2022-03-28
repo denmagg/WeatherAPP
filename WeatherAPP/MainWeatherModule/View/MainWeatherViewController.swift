@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 struct WeatherData {
     var dataDayForecast: [(String, String, String, String)]
@@ -17,13 +18,14 @@ struct HourlyWeatherData {
     var dataHourlyForecast: [(String, String, String)]
 }
 
-class MainWeatherViewController: UIViewController {
+class MainWeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     var presenter: MainWeatherPresenterProtocol!
     var bottomPadding: CGFloat?
     let manageButton = UIButton()
     let weatherLinkButton = UIButton()
     var loadingPage = 0
+//    var locationManager: CLLocationManager?
     
     lazy var cityViews = [CityView(frame: CGRect.zero, color: .blue), CityView(frame: CGRect.zero, color: .gray)]
     
@@ -64,6 +66,7 @@ class MainWeatherViewController: UIViewController {
             static let height: CGFloat = 50
             static let bottomSpacing: CGFloat = -12
         }
+        static let margins: CGFloat = 20
         enum Margins {
             static let leading: CGFloat = 20
             static let trailing: CGFloat = -20
@@ -82,7 +85,22 @@ class MainWeatherViewController: UIViewController {
         configureMainWeatherInfo()
         setupSubviews()
         setupConstraints()
+        
+//        locationManager = CLLocationManager()
+//        locationManager?.delegate = self
+//        locationManager?.requestWhenInUseAuthorization()
     }
+    
+//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+//        if manager.authorizationStatus == .authorizedWhenInUse {
+//            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+//                if CLLocationManager.isRangingAvailable() {
+//                    //do stuff
+//                    presenter.
+//                }
+//            }
+//        }
+//    }
     
 //    override func viewWillAppear(_ animated: Bool) {
 //        pageControl.currentPage = loadingPage
@@ -126,12 +144,12 @@ class MainWeatherViewController: UIViewController {
         
         // setup manageButton constraints
         manageButton.translatesAutoresizingMaskIntoConstraints = false
-        manageButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: Consts.Margins.trailing).isActive = true
+        manageButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Consts.margins).isActive = true
         manageButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         // setup weatherLinkButton constraints
         weatherLinkButton.translatesAutoresizingMaskIntoConstraints = false
-        weatherLinkButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Consts.Margins.leading).isActive = true
+        weatherLinkButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Consts.margins).isActive = true
         weatherLinkButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         weatherLinkButton.widthAnchor.constraint(equalToConstant: Consts.WeatherLinkButton.width).isActive = true
         weatherLinkButton.heightAnchor.constraint(equalTo: weatherLinkButton.widthAnchor).isActive = true

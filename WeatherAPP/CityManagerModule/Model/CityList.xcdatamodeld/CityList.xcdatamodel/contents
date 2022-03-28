@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Entity" representedClassName="Entity" syncable="YES">
+    <entity name="CityList" representedClassName="CityList" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="temperature" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="CityWeather" representedClassName="CityWeather" syncable="YES">
+        <attribute name="cityName" optional="YES" attributeType="String"/>
+        <attribute name="currentTemperature" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dataDayForecast" optional="YES"/>
+        <attribute name="dataDetailDescription" optional="YES"/>
+        <attribute name="dataHourlyForecast" optional="YES"/>
+        <attribute name="dataSpecs" optional="YES"/>
+        <attribute name="todayDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="todayMaxTemperature" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="todayMinTemperature" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify"/>
+    </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="CityList" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="CityWeather" positionX="-54" positionY="18" width="128" height="194"/>
     </elements>
 </model>
