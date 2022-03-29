@@ -26,9 +26,7 @@ class MainWeatherPresenter: MainWeatherPresenterProtocol {
     private weak var view: MainWeatherViewProtocol?
     private var router: RouterProtocol?
     private let locationFetcher: LocationFetcher?
-    lazy var persistentContainer: NSPersistentContainer = {
-        
-    }
+    
     
     required init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher) {
         self.view = view

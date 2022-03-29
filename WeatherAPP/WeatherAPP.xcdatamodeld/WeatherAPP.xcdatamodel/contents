@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="City" representedClassName="City" syncable="YES">
+        <attribute name="isCelsius" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isCurrent" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="temperature" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timezoneUTC" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="weatherForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherForecast" inverseName="city" inverseEntity="WeatherForecast"/>
+    </entity>
+    <entity name="DailyForecast" representedClassName="DailyForecast" syncable="YES">
+        <attribute name="maxTemperature" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minTemperature" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weatherIcon" optional="YES" attributeType="Binary"/>
+        <relationship name="weatherForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherForecast" inverseName="dailyForecast" inverseEntity="WeatherForecast"/>
+    </entity>
+    <entity name="HourlyForecast" representedClassName="HourlyForecast" syncable="YES">
+        <attribute name="temperature" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weatherIcon" optional="YES" attributeType="Binary"/>
+        <relationship name="weatherForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherForecast" inverseName="hourlyForecast" inverseEntity="WeatherForecast"/>
+    </entity>
+    <entity name="WeatherForecast" representedClassName="WeatherForecast" syncable="YES">
+        <attribute name="chanceOfPrecipitation" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="precipitationSize" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pressure" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="sunrise" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sunset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="typeOfPrecipitation" optional="YES" attributeType="String"/>
+        <attribute name="uvIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String"/>
+        <attribute name="weatherDetailDescription" optional="YES" attributeType="String"/>
+        <attribute name="windDirection" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="weatherForecast" inverseEntity="City"/>
+        <relationship name="dailyForecast" optional="YES" toMany="YES" maxCount="10" deletionRule="Nullify" ordered="YES" destinationEntity="DailyForecast" inverseName="weatherForecast" inverseEntity="DailyForecast"/>
+        <relationship name="hourlyForecast" optional="YES" toMany="YES" maxCount="26" deletionRule="Nullify" ordered="YES" destinationEntity="HourlyForecast" inverseName="weatherForecast" inverseEntity="HourlyForecast"/>
+    </entity>
+    <elements>
+        <element name="City" positionX="-312.32421875" positionY="153.6875" width="128" height="133"/>
+        <element name="WeatherForecast" positionX="-137.36328125" positionY="3.546875" width="128" height="298"/>
+        <element name="DailyForecast" positionX="50.71875" positionY="172.4921875" width="128" height="103"/>
+        <element name="HourlyForecast" positionX="50.10546875" positionY="284.19140625" width="128" height="103"/>
+    </elements>
+</model>

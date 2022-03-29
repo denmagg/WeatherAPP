@@ -19,7 +19,7 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate {
 
     func start() {
         manager.requestWhenInUseAuthorization()
-        manager.distanceFilter = 1000
+        manager.distanceFilter = 3000
         manager.startUpdatingLocation()
     }
 
