@@ -21,14 +21,16 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     func createMainWeatherModule(router: RouterProtocol) -> UIViewController {
         let view = MainWeatherViewController()
         let locationFetcher = LocationFetcher()
-        let presenter = MainWeatherPresenter(view: view, router: router, locationFetcher: locationFetcher)
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext
+        let presenter = MainWeatherPresenter(view: view, router: router, locationFetcher: locationFetcher, context: context!)
         view.presenter = presenter
         return view
     }
     
     func createCityManagerModule(router: RouterProtocol) -> UIViewController {
         let view = CityManagerViewController()
-        let presenter = CityManagerPresenter(view: view, router: router)
+        let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext
+        let presenter = CityManagerPresenter(view: view, router: router, context: context!)
         view.presenter = presenter
         return view
     }

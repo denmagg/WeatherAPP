@@ -14,7 +14,7 @@ protocol MainWeatherViewProtocol: AnyObject {
 }
 
 protocol MainWeatherPresenterProtocol: AnyObject {
-    init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher)
+    init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher, context: NSManagedObjectContext)
     
     func tapOnTheManage()
 }
@@ -26,12 +26,13 @@ class MainWeatherPresenter: MainWeatherPresenterProtocol {
     private weak var view: MainWeatherViewProtocol?
     private var router: RouterProtocol?
     private let locationFetcher: LocationFetcher?
+    private var context: NSManagedObjectContext!
     
-    
-    required init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher) {
+    required init(view: MainWeatherViewProtocol, router: RouterProtocol, locationFetcher: LocationFetcher, context: NSManagedObjectContext) {
         self.view = view
         self.router = router
         self.locationFetcher = locationFetcher
+        self.context = context
         locationFetcher.start()
     }
     

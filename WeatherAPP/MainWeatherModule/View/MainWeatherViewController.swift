@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 struct WeatherData {
     var dataDayForecast: [(String, String, String, String)]
